@@ -7,9 +7,8 @@
 //     $tmp[]=$key;
 //   }
 
-// include_once "../base.php"
-$dsn="mysql:host=localhost;dbname=invoice;charset=utf8";
-$pdo=new PDO($dsn,'root','');
+include_once "../base.php";
+
 
 echo "<pre>";
 print_r(array_keys($_POST));
