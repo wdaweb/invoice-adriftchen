@@ -53,8 +53,8 @@ $sql="insert into
       (`year`,`period`,`number`,`type`)
     values
       ('$year','$period','$six','4')";
-// $pdo->exec($sql);
-echo $sql;
+$pdo->exec($sql);
+// echo $sql;
 
   }
 }
@@ -65,6 +65,6 @@ echo $sql;
 
 
 echo "新增完成";
-// header("location:../index.php?do=award_numbers"); 
+// header("location:../index.php?do=award_numbers&pd=".$year."-".$period); 
 
 ?>
