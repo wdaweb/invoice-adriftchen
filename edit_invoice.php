@@ -18,7 +18,7 @@ print_r($inv);
       <input type="number" name="number" value="<?=$inv['number'];?>">
   </div>
   <div>消費日期:<input type="date" name="date" value="<?=$inv['date'];?>"></div>
-  <div>消費金額:<input type="text" name="payment" value="<?=['payment'];?>"></div>
+  <div>消費金額:<input type="text" name="payment" value="<?=$inv['payment'];?>"></div>
   <div>
     <input type="submit" value="修改">
     <input type="reset" value="重置">
