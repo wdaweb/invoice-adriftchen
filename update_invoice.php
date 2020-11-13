@@ -18,4 +18,5 @@ $pdo->exec($sql);
 
 header("location:../index.php?do=invoice_list");
 
+
 ?>
