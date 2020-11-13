@@ -12,20 +12,58 @@
 </head>
 <body>
 
+
+
+<h3 class="text-center"> 統一發票紀錄與對獎 </h3>
+
+<div class="container">
+<div class="col-8 d-flex justify-content-between p-3 mx-auto border">
+<?php
+    $month=[
+        1=>"1,2月",
+        2=>"3,4月",
+        3=>"5,6月",
+        4=>"7,8月",
+        5=>"9,10月",
+        6=>"11,12月",
+    ];
+
+    $m=ceil(date("m")/2);
+
+?>
+    <div class="text-center"><?=$month[$m];?></div>
+    <div class="text-center">
+        <a href="?do=invoice_list">當期發票</a>
+    </div>
+    <div class="text-center">
+        <a href="">對獎</a>
+    </div>
+    <div class="text-center">
+        <a href="">輸入獎號</a>
+    </div>
+    <div class="text-center">
+        <a href="index.php">回首頁</a>
+    </div>
+</div>
+
+<div class="col-8 d-flex p-3 mx-auto border">
 <?php
 
-if(isset($_GET['do'])){
+    if(isset($_GET['do'])){
 
-    $file=$_GET['do'].".php";
-    include $file;
-    include "invoice.php";
+        $file=$_GET['do'].".php";
+        echo $file;
+        include $file;
 
-}else{
 
-    include "main.php";
-}
-//include 有畫面之後就不用再打基礎指令
-?>
+    }else{
 
+        include "main.php";
+    }
+
+    ?>
+</div>
+
+</div>
 </body>
 </html>

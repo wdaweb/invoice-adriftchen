@@ -21,8 +21,9 @@ echo $sql;
 $pdo->exec($sql); //exec為新增一筆資料
 
 echo "新增完成";
-// header("location:../index.php"); 
+header("location:../index.php?do=invoice_list"); 
 //此檔案位於上一層
+//加?do=invoice_list> 按回首頁會回到index，並且下方有新增完畢的清單(類似智慧型框架)
 
 
 ?>
