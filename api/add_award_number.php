@@ -19,14 +19,16 @@ $sql="insert into
       values
         ('$year','$period','{$_POST['special_prize']}','1')";
 $pdo->exec($sql);
+echo $sql;
 
-//特別獎新增 type=2
+//特獎新增 type=2
 $sql="insert into 
         award_numbers 
         (`year`,`period`,`number`,`type`)
       values
-        ('$year','$period','{$_POST['special_prize']}','2')";
+        ('$year','$period','{$_POST['grand_prize']}','2')";
 $pdo->exec($sql);
+echo $sql;
 
 //頭獎 type=3
 foreach($_POST['first_prize'] as $first){
@@ -38,6 +40,7 @@ foreach($_POST['first_prize'] as $first){
       values
         ('$year','$period','$first','3')";
         $pdo->exec($sql);
+        echo $sql;
     }
 }
 
@@ -52,6 +55,7 @@ $sql="insert into
       ('$year','$period','$six','4')";
 // $pdo->exec($sql);
 echo $sql;
+
   }
 }
 
@@ -61,6 +65,6 @@ echo $sql;
 
 
 echo "新增完成";
-header("location:../index.php?do=award_numbers"); 
+// header("location:../index.php?do=award_numbers"); 
 
 ?>
