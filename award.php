@@ -44,6 +44,10 @@ echo "</pre>";
 //單筆對獎
 //$award為陣列型態，$award['type']才是數字，$number可能為字串
 //只寫if($award==$number)兩個資料比對，就算從phpmyadmin改為中獎號碼也會顯示不中=>因為沒有從資料型態比對，瀏覽器也不會有錯誤訊息
+
+//先設$all_res==-1，若$res=$i=>有中(任何一個獎)=>$all_res值改變=>最後特別顯示;若無(值不變)=>最後顯示"未中任何獎"
+
+$all_res=-1;
 foreach($awards as $award){
     switch($award['type']){
         case 1:
@@ -53,6 +57,7 @@ foreach($awards as $award){
                 echo "<br>中了特別獎<br>";
             }else{
                 echo "<br>特別獎沒中<br>";
+                $all_res=1; /* 可設-1以外的值 */
             }
         break;
         case 2:
@@ -62,33 +67,45 @@ foreach($awards as $award){
                 echo "中了特獎<br>";
             }else{
                 echo "特獎沒中<br>";
+                $all_res=1;
             }
 
         break;
         case 3:
-             //頭獎、二獎~六獎，除了頭獎，之後獎從六獎開始往前對
+            //頭獎、二獎~六獎，除了頭獎，之後獎從六獎開始往前對
+            //$res變動表示有中二到六某個特定獎，解決重複中五/四/三..的問題
+            $res=-1;
             for($i=5;$i>=0;$i--){
                 $target=mb_substr($award['number'],$i,(8-$i),'utf8');
                 $mynumber=mb_substr($number,$i,(8-$i),'utf8');
 
                 if($target==$mynumber){
-                    echo "<br>號碼=".$number."<br>";
-                    echo "中了{$awardStr[$i]}獎<br>";
+                    $res=$i;
                 }else{
                     break;
                     //continue
                 }
+            }
+            //以下echo要讓$res迴圈跑完，放在最外面，不要一個一個顯示出來(三/四獎沒中...)
+            if($res!=-1){
+                echo "<br>號碼=".$number."<br>";
+                echo "中了{$awardStr[$res]}獎<br>";
+                $all_res=1;
             }
         break;
         case 4:
             //mb_substr($number,5,3)為key值第5位之後取3碼(5-7)
             if($award['number']==mb_substr($number,5,3,'utf8')){
                 echo "<br>號碼=".$number."<br>";
+                $all_res=1;
                 echo "中了增開六獎";
             }
         break;
     }
 }
 
+if($all_res==-1){
+    echo "本次未中任何獎";
+}
 
 ?>
