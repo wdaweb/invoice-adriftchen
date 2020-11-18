@@ -9,8 +9,18 @@ $rows=$pdo->query($sql)->fetchAll();
 // foreach($rows as $row){
 //     echo $row['code'].$row['number']."<br>";
 // }
-
 ?>
+<!-- 傳值 hw -->
+<div class='row justify-content-around' style="list-style-type:none;padding:0">
+<li><a href="">1,2月</a></li>
+<li><a href="">3,4月</a></li>
+<li><a href="">5,6月</a></li>
+<li><a href="">7,8月</a></li>
+<li><a href="">9,10月</a></li>
+<li><a href="">11,12月</a></li>
+
+</div>
+
 
 <table class="table text-center">
     <tr>
@@ -33,6 +43,9 @@ foreach($rows as $row){
         </button>
     <button class="btn btn-sm btn-danger">
     <a class="text-light" href="?do=del_invoice&id=<?=$row['id'];?>">刪除
+    </button>
+    <button class="btn btn-sm btn-success">
+    <a class="text-light" href="?do=award&id=<?=$row['id'];?>">對獎
     </button>
     </td>
 </tr>

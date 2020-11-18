@@ -52,7 +52,7 @@
     </div>
 </div>
 
-<div class="col-lg-8 col-md-12 d-flex p-3 mx-auto border">
+<div class="col-lg-8 col-md-12 d-flex flex-column p-3 mx-auto border">
 <?php
 
     if(isset($_GET['do'])){
