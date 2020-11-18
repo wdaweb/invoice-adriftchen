@@ -14,7 +14,7 @@ for($i=0;$i<50;$i++){
   /*$number=rand(0,99999999);  只寫這樣若前面的位數有0，字串長度會減少而不是8個 */
   //另種寫法 echo str_pad($number,8,'0',STR_PAD_LEFT)."<br>";
   //echo $number."<br>";
-  $number=sprintf("%08d",rand(99999999)); /* strlen=8且補位在前面 */
+  $number=sprintf("%08d",rand(0,99999999)); /* strlen=8且補位在前面 */
   $payment=rand(1,20000);
   // echo $payment;
 
@@ -33,7 +33,8 @@ for($i=0;$i<50;$i++){
     'period'=>$period
     ];
 
-$sql="insert into invoices (`".implode("`,`",array_keys($_POST))."`) values('".implode("','",$_POST)."')";
+$sql="insert into invoices (`".implode("`,`",array_keys($ga))."`) values('".implode("','",$ga)."')";
+echo $sql;
 //insert 前為""指欄位名稱，value內為值放單引號''
 $pdo->exec($sql);
 
