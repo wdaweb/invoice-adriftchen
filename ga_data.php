@@ -8,7 +8,7 @@ echo "資料產生中...";
 echo date("Y-m-d H:i:s");
 
 
-for($i=0;$i<50;$i++){
+for($i=0;$i<10000;$i++){
 
   $code=$codeBase[rand(0,5)];
   /*$number=rand(0,99999999);  只寫這樣若前面的位數有0，字串長度會減少而不是8個 */

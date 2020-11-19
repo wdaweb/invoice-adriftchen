@@ -40,12 +40,12 @@ foreach($awards as $aw){
 //傳值 hw
 ?>
 <div class='row justify-content-around' style="list-style-type:none;padding:0">
-<li><a href="">1,2月</a></li>
-<li><a href="">3,4月</a></li>
-<li><a href="">5,6月</a></li>
-<li><a href="">7,8月</a></li>
-<li><a href="">9,10月</a></li>
-<li><a href="">11,12月</a></li>
+<li><a href="?do=award_numbers&pd=2020-1>">1,2月</a></li>
+<li><a href="?do=award_numbers&pd=2020-2>">3,4月</a></li>
+<li><a href="?do=award_numbers&pd=2020-3>">5,6月</a></li>
+<li><a href="?do=award_numbers&pd=2020-4>">7,8月</a></li>
+<li><a href="?do=award_numbers&pd=2020-5>">9,10月</a></li>
+<li><a href="?do=award_numbers&pd=2020-6>">11,12月</a></li>
 
 </div>
 
@@ -112,3 +112,7 @@ foreach($awards as $aw){
    </tbody>
 </table>
 
+<!-- 一次對全部的發票 -->
+<button class="btn btn-primary mx-auto">
+<a href="?do=all_awards&year=<?=$year;?>&period=<?=$period;?>" class="text-light">對獎</a>
+</button> 
