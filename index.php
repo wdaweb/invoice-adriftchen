@@ -1,3 +1,4 @@
+<?php include_once "base.php";?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,3 +74,4 @@
 </div>
 </body>
 </html>
+<?php $_SESSION['err']=[];?>  <!-- 每次都清空暫存值 -->

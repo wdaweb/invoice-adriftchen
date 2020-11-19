@@ -9,21 +9,27 @@
 
 include_once "../base.php";
 
+$_SESSION['err']=[];
+
 
 echo "<pre>";
 print_r(array_keys($_POST));
 echo "</pre>";
 
+accept('number','發票號碼欄未必填');
 
 $sql="insert into invoices (`".implode("`,`",array_keys($_POST))."`) values('".implode("','",$_POST)."')";
 //insert 前為""指欄位名稱，value內為值放單引號''
 echo $sql;
-$pdo->exec($sql); //exec為新增一筆資料
 
 echo "新增完成";
-header("location:../index.php?do=invoice_list"); 
-//此檔案位於上一層
-//加?do=invoice_list> 按回首頁會回到index，並且下方有新增完畢的清單(類似智慧型框架)
+
+if(empty($_SESSION['err'])){
+  $pdo->exec($sql); //確認格式無誤才新增到資料庫
+  header("location:../index.php?do=invoice_list");
+}else{
+  header("location:../index.php");
+}
 
 
 ?>
