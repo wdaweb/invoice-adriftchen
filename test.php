@@ -2,34 +2,11 @@
 
 include_once "base.php";
 
-
-
-//"select * from invoices where id='9'";
-//$row=$pdo->query("select * from invoices where id='9'")->fetch();
-//$res=回傳的id為9的發票內容
-echo implode(" && ",['欄位1'=>'值1','欄位2'=>'值2','id'=>'9']);
-echo "<br>";
-echo "欄位1='值1' && 欄位2='值2' && id='9'";
-echo "<hr>";
-$array=['欄位1'=>'值1','欄位2'=>'值2','id'=>'9'];
-echo "<hr>";
-
-//利用一個暫時的陣列來存放語句的片段
-foreach($array as $key => $value){
-    $tmp[]=sprintf("`%s`='%s'",$key,$value);
-    //$tmp[]="`".$key."`='".$value."'";
-}
-
-print_r($tmp);
-echo "<br>";
-
-//使用implode把暫時陣列中的語句串回SQL語法
-echo implode(" && ",$tmp);
-
-echo "<br>";
+//取得單一資料的自訂函式
 function find($table,$id){
     global $pdo;
     $sql="select * from $table where "; //把重複的句子拉到前面
+
     if(is_array($id)){
         foreach($id as $key => $value){
             $tmp[]=sprintf("`%s`='%s'",$key,$value);
@@ -44,14 +21,60 @@ function find($table,$id){
     return $row;
 }
 
-$row=find('invoices',5);
-echo $row['code'].$row['number']."<br>";
+function all($table,...$arg){
+  global $pdo;
 
-$row=find('invoices',['code'=>'KJ','number'=>'69954161']);
-echo $row['code'].$row['number']."<br>";
+//   echo gettype($arg);
 
-$row=find('invoices',17);
-echo $row['code'].$row['number']."<br>";
+  $sql="select * from $table "; 
 
+  if(isset($arg[0])){
+    if(is_array($arg[0])){
+        //製作會在 where 後面的句子字串(陣列格式)
+        if(!empty($arg[0])){
+            foreach($arg[0] as $key => $value){
+                $tmp[]=sprintf("`%s`='%s'",$key,$value);
+                //$tmp[]="`".$key."`='".$value."'";
+            }
+
+            $sql=$sql." where ".implode(' && ',$tmp);
+        }
+
+    }else{
+        //製作非陣列的語句接在$sql後面
+            $sql=$sql.$arg[0];       
+    }
+}
+
+if(isset($arg[1])){
+
+    $sql=$sql.$arg[1];
+
+}
+echo $sql."<br>";
+return $pdo->query($sql)->fetchAll(); 
+
+}
+// print_r(all('invoices',['id'=>20])[0]);
+// print_r(all('invoices',['code'=>'AB']));
+
+// echo "<hr>";
+// print_r(all('invoices'));
+// echo "<hr>";
+// print_r(all('invoices',['code'=>"AB",'period'=>6]));
+// echo "<hr>";
+// print_r(all('invoices',['code'=>"AB",'period'=>1])," order by date ");
+// echo "<hr>";
+// print_r(all('invoices'));
+
+//四種all()取得多筆資料的方法
+echo "<hr>";
+all('invoices');
+echo "<hr>";
+all('invoices',['code'=>"AB",'period'=>6]);
+echo "<hr>";
+all('invoices',['code'=>"AB",'period'=>1]," order by date ");
+echo "<hr>";
+all('invoices',"limit 5");
 
 ?>
