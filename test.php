@@ -2,7 +2,6 @@
 
 include_once "base.php";
 
-find('invoices',"id='9'");
 
 //上面的指令丟到function裡會組成句子 select * from where id='9';
 //$row=$pdo->query("select * from where id='9'")->fetch();
@@ -10,22 +9,37 @@ find('invoices',"id='9'");
 //以上直接用pdo有錯誤訊息跑不出來:pdo沒定義
 //funciton用pdo要設區域性global pdo
 
-function find($table,$def){
+function find($table,$id){
   global $pdo;
 
-  $sql="select * from $table where $def";
+  if(is_numeric($id)){
+    $sql="select * from $table where id='$id'";
+  }else{
+    $sql="select * from $table where $id";
+  }
+
   $row=$pdo->query($sql)->fetch();
 
   return $row;
 }
 
-$row=find('invoices',"id='11'"); /*find()本身是一個變數, */
-echo $row['code'];
-echo $row['number'];
+// function find2($table,$def){
+//   global $pdo;
 
-$row=find('invoices',"id='15'"); 
-echo $row['code'];
-echo $row['number'];
+//   $sql="select * from $table where $def";
+//   $row=$pdo->query($sql)->fetch();
+
+//   return $row;
+// }
+
+$row=find('invoices',11); /*find()本身是一個變數, */
+echo $row['code'].$row['number']."<br>";
+
+$row=find('invoices',"code='AA'&& number='30292747'"); 
+echo $row['code'].$row['number']."<br>";
+
+$row=find('invoices',27); 
+echo $row['code'].$row['number']."<br>";
 
 
 
