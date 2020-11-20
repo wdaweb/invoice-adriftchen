@@ -55,6 +55,29 @@ echo $sql."<br>";
 return $pdo->query($sql)->fetchAll(); 
 
 }
+
+//到資料庫刪資料的func.
+function del($table,$id){
+    global $pdo;
+    $sql="delete from $table where "; //把重複的句子拉到前面
+
+    if(is_array($id)){
+        foreach($id as $key => $value){
+            $tmp[]=sprintf("`%s`='%s'",$key,$value);
+            //$tmp[]="`".$key."`='".$value."'";
+        }
+        $sql=$sql.implode(' && ',$tmp);
+    }else{
+        $sql=$sql . " id='$id' ";
+    }
+    // echo $sql;
+    $row=$pdo->exec($sql);
+
+    return $row;
+}
+
+$def=['id'=>25];
+echo del('invoices', $def);
 // print_r(all('invoices',['id'=>20])[0]);
 // print_r(all('invoices',['code'=>'AB']));
 
