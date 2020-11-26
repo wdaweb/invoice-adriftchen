@@ -18,9 +18,13 @@ echo "</pre>";
 
 accept('number','發票號碼欄未必填');
 
-$sql="insert into invoices (`".implode("`,`",array_keys($_POST))."`) values('".implode("','",$_POST)."')";
+// $sql="insert into invoices (`".implode("`,`",array_keys($_POST))."`) values('".implode("','",$_POST)."')";
 //insert 前為""指欄位名稱，value內為值放單引號''
-echo $sql;
+// echo $sql;
+
+// 以下導入函式直接用，可把#21、#23註解掉
+save('invoices',$_POST);
+
 
 echo "新增完成";
 

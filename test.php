@@ -91,7 +91,7 @@ function update($table,$array){
     }
     $sql=$sql.implode(",",$tmp) . " where `id`='{$array['id']}'";
     echo $sql;
-    // $pdo->exec($sql);
+    $pdo->exec($sql);
 }
 function insert($table,$array){
     global $pdo;
