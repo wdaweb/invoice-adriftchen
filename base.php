@@ -144,8 +144,4 @@ function to($url){
   header("location:".$url);
 }
 
-function to($url){
-  header("location:".$url);
-}
-
 ?>
