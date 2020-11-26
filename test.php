@@ -16,7 +16,9 @@ function find($table,$id){
     }else{
         $sql=$sql . " id='$id' ";
     }
-    $row=$pdo->query($sql)->fetch();
+    $row=$pdo->query($sql)->fetch(PDO::FETCH_ASSOC); /* (PDO::FETCH_ASSOC)只撈出欄位 不含索引值 */
+
+    // 原寫法 mysqli_fetch_assoc() 有索引 有欄位
 
     return $row;
 }
@@ -76,8 +78,49 @@ function del($table,$id){
     return $row;
 }
 
-$def=['id'=>25];
-echo del('invoices', $def);
+
+//更新一筆的方法 多筆要另外寫
+function update($table,$array){
+    global $pdo;
+    $sql="update $table set ";
+    foreach($array as $key => $value){
+        if($key!= 'id'){
+            
+            $tmp[]=sprintf("`%s`='%s'",$key,$value);
+        }
+    }
+    $sql=$sql.implode(",",$tmp) . " where `id`='{$array['id']}'";
+    echo $sql;
+    // $pdo->exec($sql);
+}
+function insert($table,$array){
+    global $pdo;
+    $sql="insert into $table(`" . implode("`,`",array_keys($array)) . "`) values('".implode("','",$array)."')";
+    $pdo->exec($sql);   
+}
+
+function save($table,$array){ /* 用save 資料必須是陣列 */
+    if(isset($array['id'])){
+        update($table,$array);  /* 有帶id才新增、儲存 */
+    }else{
+        insert($table,$array);
+    }
+}
+
+//沒有funciton前的寫法，要把sql語句寫出來
+// $row=find('invoices',22);
+// echo "<pre>";
+// print_r($row);
+// echo "</pre><br>";
+// update invoices set `code`='AA',`payment`='1' where `id`='22';
+// $row['code']='AA';
+// $row['payment']='1';
+
+// update('invoices',$row);
+
+
+// $def=['id'=>25];
+// echo del('invoices', $def);
 // print_r(all('invoices',['id'=>20])[0]);
 // print_r(all('invoices',['code'=>'AB']));
 
