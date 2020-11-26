@@ -84,7 +84,7 @@ function all($table,...$arg){
   if(isset($arg[1])){
       $sql=$sql.$arg[1];
   }
-  echo $sql."<br>";
+  // echo $sql."<br>";
   return $pdo->query($sql)->fetchAll(); 
 }
 function del($table,$id){
@@ -116,7 +116,7 @@ function update($table,$array){
       //$tmp[]="`".$key."`='".$value."'";
   }
   $sql=$sql.implode(",",$tmp) . " where `id`='{$array['id']}'";
-  echo $sql;
+  // echo $sql;
   $pdo->exec($sql);
 }
 
@@ -142,6 +142,12 @@ function save($table,$array){
 
 function to($url){
   header("location:".$url);
+}
+
+//萬用查詢函式
+function q($sql){
+  global $pdo;
+  return $pdo->query($sql)->fetchAll();
 }
 
 ?>
