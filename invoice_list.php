@@ -2,7 +2,7 @@
 include_once "base.php";
 
 $period=ceil(date("m")/2);
-echo $period;
+// echo $period;
 
 $period=ceil(date("m")/2);
 
@@ -10,7 +10,7 @@ $period=ceil(date("m")/2);
 
 // $rows=$pdo->query($sql)->fetchAll();
 //刪除上兩行，導入以下自訂函式撈資料
-$rows=all('invoice',['period' => $period],' order by date '); /* order by date 前要空格 */
+$rows=all('invoices',['period' => $period],' order by date '); /* order by date 前要空格 */
 
 //測試用可刪掉了
 // foreach($rows as $row){

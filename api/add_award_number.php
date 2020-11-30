@@ -65,6 +65,6 @@ $pdo->exec($sql);
 
 
 echo "新增完成";
-// header("location:../index.php?do=award_numbers&pd=".$year."-".$period); 
+header("location:../index.php?do=award_numbers&pd=".$year."-".$period); /* 測試完要打開，新增完獎號才會回到這一頁 */
 
 ?>
