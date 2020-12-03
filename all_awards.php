@@ -10,27 +10,27 @@ include_once "base.php";
 
 $period_str=[
   1=>'1,2月',
-  1=>'3,4月',
-  1=>'5,6月',
-  1=>'7,8月',
-  1=>'9,10月',
-  1=>'11,12月'
+  2=>'3,4月',
+  3=>'5,6月',
+  4=>'7,8月',
+  5=>'9,10月',
+  6=>'11,12月'
 ];
 
-echo "要對的發票為".$_GET['year']."年";
+echo "目前對的是".$_GET['year']."年";
 echo $period_str[$_GET['period']]."的發票";
 
 //1.撈出該期發票
 $sql="select * from invoices where period='{$_GET['period']}' && left(date,4)='{$_GET['year']}' order by date desc";
-
+// echo $sql;
 //php這裡無法用explode取得
 // $year=explode("-",$_GET['pd'])[0];
 // $period=explode("-",$_GET['pd'])[1];
 
 // echo $sql;
-$invoices=$pdo-> query($sql)->fetchALL();
+$invoices=$pdo-> query($sql)->fetchALL(PDO::FETCH_ASSOC);
 // echo count($invoices); /* 可看有幾筆 */
-print_r($invoices);
+// print_r($invoices);
 
 // echo "<pre>";
 // print_r($invoices);

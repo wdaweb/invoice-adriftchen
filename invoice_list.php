@@ -19,12 +19,12 @@ $rows=all('invoices',['period' => $period],' order by date '); /* order by date 
 ?>
 <!-- 傳值 hw -->
 <div class='row justify-content-around' style="list-style-type:none;padding:0">
-<li><a href="">1,2月</a></li>
-<li><a href="">3,4月</a></li>
-<li><a href="">5,6月</a></li>
-<li><a href="">7,8月</a></li>
-<li><a href="">9,10月</a></li>
-<li><a href="">11,12月</a></li>
+<li><a href="?do=invoices&period=2020-1">1,2月</a></li>
+<li><a href="?do=invoices&period=2020-2">3,4月</a></li>
+<li><a href="?do=invoices&period=2020-3">5,6月</a></li>
+<li><a href="?do=invoices&period=2020-4">7,8月</a></li>
+<li><a href="?do=invoices&period=2020-5">9,10月</a></li>
+<li><a href="?do=invoices&period=2020-6">11,12月</a></li>
 
 </div>
 
