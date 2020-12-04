@@ -122,7 +122,7 @@ foreach($invoices as $inv){
                 //判斷最後中的獎項
                 if($res!=-1){
                     echo "<br>號碼=".$number."<br>";
-                    echo "中了{$awardStr[$res]}獎<br>";
+                    echo "<div class='text-danger'>中了{$awardStr[$res]}獎</div><br>";
                     $all_res=1;
                 }
             break;

@@ -1,10 +1,11 @@
 <?php
 include_once "base.php";
 
-$period=ceil(date("m")/2);
+// $period=ceil(date("m")/2);
 // echo $period;
 
-$period=ceil(date("m")/2);
+$period=!empty($_GET['period'])?$_GET['period']:ceil(date("m")/2);
+//三元運算子，若$_GET['period]帶回來有值就拿來用，若無就用ceil(date("m")/2得到期別值
 
 // $sql="select * from `invoices` where period='$period' order by date desc";
 
@@ -19,12 +20,12 @@ $rows=all('invoices',['period' => $period],' order by date '); /* order by date 
 ?>
 <!-- 傳值 hw -->
 <div class='row justify-content-around' style="list-style-type:none;padding:0">
-<li><a href="?do=invoices&period=2020-1">1,2月</a></li>
-<li><a href="?do=invoices&period=2020-2">3,4月</a></li>
-<li><a href="?do=invoices&period=2020-3">5,6月</a></li>
-<li><a href="?do=invoices&period=2020-4">7,8月</a></li>
-<li><a href="?do=invoices&period=2020-5">9,10月</a></li>
-<li><a href="?do=invoices&period=2020-6">11,12月</a></li>
+<li><a href="?do=invoice_list&period=1">1,2月</a></li>
+<li><a href="?do=invoice_list&period=2">3,4月</a></li>
+<li><a href="?do=invoice_list&period=3">5,6月</a></li>
+<li><a href="?do=invoice_list&period=4">7,8月</a></li>
+<li><a href="?do=invoice_list&period=5">9,10月</a></li>
+<li><a href="?do=invoice_list&period=6">11,12月</a></li>
 
 </div>
 
