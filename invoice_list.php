@@ -18,7 +18,7 @@ $rows=all('invoices',['period' => $period],' order by date '); /* order by date 
 //     echo $row['code'].$row['number']."<br>";
 // }
 ?>
-<!-- 傳值 hw -->
+
 <div class='row justify-content-around' style="list-style-type:none;padding:0">
 <li><a href="?do=invoice_list&period=1">1,2月</a></li>
 <li><a href="?do=invoice_list&period=2">3,4月</a></li>
@@ -26,6 +26,7 @@ $rows=all('invoices',['period' => $period],' order by date '); /* order by date 
 <li><a href="?do=invoice_list&period=4">7,8月</a></li>
 <li><a href="?do=invoice_list&period=5">9,10月</a></li>
 <li><a href="?do=invoice_list&period=6">11,12月</a></li>
+
 
 </div>
 

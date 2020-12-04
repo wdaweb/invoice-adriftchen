@@ -100,7 +100,7 @@ foreach($invoices as $inv){
 
                 if($award['number']==$number){
                     echo "<br>號碼=".$number."<br>";
-                    echo "中了特獎<br>";
+                    echo "<br>中了特獎<br>";
                     $all_res=1;
                 }
 
@@ -130,7 +130,7 @@ foreach($invoices as $inv){
                 if($award['number']==mb_substr($number,5,3,'utf8')){
                     echo "<br>號碼=".$number."<br>";
                     $all_res=1;
-                    echo "中了增開六獎";
+                    echo "<br>中了增開六獎<br>";
                 }
             break;
         }
