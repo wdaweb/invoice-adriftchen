@@ -28,13 +28,13 @@ $rows=all('invoices',['period' => $period],' order by date ' . $start . ', 100 '
 <li><a href="?do=invoice_list&period=4&start=1">7,8月</a></li>
 <li><a href="?do=invoice_list&period=5&start=1">9,10月</a></li>
 <li><a href="?do=invoice_list&period=6&start=1">11,12月</a></li>
-<br>
-<a href="?do=invoice_list&period=<?=$period?>&start=<?=intval($start)==1?1:intval($start)-1?>">上一頁</a>
-<!-- $star為字串，intval取整數再帶值-->
-<a href="?do=invoice_list&period=<?=$period?>&start=<?=intval($start)+1?>">下一頁</a>
-
-
 </div>
+<div class='row justify-content-around' style="list-style-type:none;padding:0">
+<a href="?do=invoice_list&period=<?=$period?>&start=<?=intval($start)==1?1:intval($start)-1?>">上一頁</a>&nbsp;第<?=$start?>頁&nbsp;<a href="?do=invoice_list&period=<?=$period?>&start=<?=intval($start)+1?>">下一頁</a>
+<!-- 顯示總頁數 -->
+</div>
+
+
 
 
 <table class="table text-center">
