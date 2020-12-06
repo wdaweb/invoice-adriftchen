@@ -21,7 +21,7 @@
 
 
 
-<h3 class="text-center"> 統一發票紀錄與對獎 </h3>
+<h3 class="text-center m-3"> 統一發票紀錄與對獎 </h3>
 
 <div class="container">
 <div class="col-lg-8 col-md-12 d-flex justify-content-between p-3 mx-auto border">
@@ -46,7 +46,7 @@
         <a href="?do=award_numbers">對獎</a>
     </div>
     <div class="text-center">
-        <a href="?do=add_awards">輸入獎號</a>
+        <a href="?do=add_awards">輸入開獎獎號</a>
     </div>
     <div class="text-center">
         <a href="index.php">回首頁</a>
