@@ -13,7 +13,7 @@ $start=!empty($_GET['start'])?$_GET['start']:1;
 
 // $rows=$pdo->query($sql)->fetchAll();
 //刪除上兩行，導入以下自訂函式撈資料
-$rows=all('invoices',['period' => $period],' order by date limit {$start}, 100 '); /* order by date 前要空格 */
+$rows=all('invoices',['period' => $period],' order by date ' . $start . ', 100 '); /* order by date 前要空格 */
 
 //測試用可刪掉了
 // foreach($rows as $row){
@@ -29,9 +29,9 @@ $rows=all('invoices',['period' => $period],' order by date limit {$start}, 100 '
 <li><a href="?do=invoice_list&period=5&start=1">9,10月</a></li>
 <li><a href="?do=invoice_list&period=6&start=1">11,12月</a></li>
 <br>
-<a href="?do=invoice_list&period={$period}&start={$start==1?1:$start-1}">上一頁</a>
-<!-- 若$start==1，頁數=1，若非1則頁數=$start-1 -->
-<a href="?do=invoice_list&period={$period}&start={$start+1}">下一頁</a>
+<a href="?do=invoice_list&period=<?=$period?>&start=<?=intval($start)==1?1:intval($start)-1?>">上一頁</a>
+<!-- $star為字串，intval取整數再帶值-->
+<a href="?do=invoice_list&period=<?=$period?>&start=<?=intval($start)+1?>">下一頁</a>
 
 
 </div>
