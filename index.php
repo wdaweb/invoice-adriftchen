@@ -24,7 +24,7 @@
 <h3 class="text-center m-3"> 統一發票紀錄與對獎 </h3>
 
 <div class="container">
-<div class="col-lg-8 col-md-12 d-flex justify-content-between p-3 mx-auto border">
+<div class="col-lg-8 col-md-12 d-flex justify-content-between p-3 mx-auto border rounded bg-info text-white">
 <?php
     $month=[
         1=>"1,2月",
@@ -40,16 +40,16 @@
 ?>
     <div class="text-center"><?=$month[$m];?></div>
     <div class="text-center">
-        <a href="?do=invoice_list&start=1">當期發票</a>
+        <a href="?do=invoice_list&start=1" class="bg-warning text-white border-none rounded">當期發票</a>
     </div>
     <div class="text-center">
-        <a href="?do=award_numbers">對獎</a>
+        <a href="?do=award_numbers" class="bg-warning text-white border-none rounded">發財時間</a>
     </div>
     <div class="text-center">
-        <a href="?do=add_awards">輸入開獎獎號</a>
+        <a href="?do=add_awards" class="bg-warning text-white border-none rounded">輸入開獎獎號</a>
     </div>
     <div class="text-center">
-        <a href="index.php">回首頁</a>
+        <a href="index.php" class="bg-warning text-white border-none rounded">回首頁</a>
     </div>
 </div>
 
