@@ -16,7 +16,7 @@ include_once "base.php";
                         <a href="api/del.php?id=<?=$_GET['id'];?>">確認</a>
                 </button>
                 <button class="btn-warning">
-                    <a href="?do=invoice_list">取消</a>
+                    <a href="?do=invoice_list&start=1">取消</a>
                 </button>
             </div>
 

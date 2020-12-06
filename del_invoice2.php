@@ -6,7 +6,7 @@ if(isset($_GET['del'])){
 
     //echo "delete from invoices where id='{$_GET['id']}'";
     $pdo->exec("delete from invoices where id='{$_GET['id']}'");
-    header("location:index.php?do=invoice_list");
+    header("location:index.php?do=invoice_list&start=1");
 }else{
 
     $inv=$pdo->query("select * from invoices where id='{$_GET['id']}'")->fetch();
@@ -23,7 +23,7 @@ if(isset($_GET['del'])){
                         <a href="?do=del_invoice&del=1&id=<?=$_GET['id'];?>">確認</a>
                 </button>
                 <button class="btn-warning">
-                    <a href="?do=invoice_list">取消</a>
+                    <a href="?do=invoice_list&start=1">取消</a>
                 </button>
             </div>
 

@@ -27,7 +27,7 @@ $row['payment']=$_POST['payment'];
 save('invoices',$row); /* 存入資料庫*/
 //$pdo->exec($sql);
 
-to("../index.php?do=invoice_list") /* 這裡也改用函式，不用header */
+to("../index.php?do=invoice_list&start=1") /* 這裡也改用函式，不用header */
 //header("location:../index.php?do=invoice_list");
 
 

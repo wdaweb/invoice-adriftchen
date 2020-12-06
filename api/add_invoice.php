@@ -30,7 +30,7 @@ echo "新增完成";
 
 if(empty($_SESSION['err'])){
   $pdo->exec($sql); //確認格式無誤才新增到資料庫
-  header("location:../index.php?do=invoice_list");
+  header("location:../index.php?do=invoice_list&start=1");
 }else{
   header("location:../index.php");
 }
